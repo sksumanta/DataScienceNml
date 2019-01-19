@@ -1,2 +1,2 @@
 # DatascienceNml
-Datascience N ml
+Titanic data analysis
