@@ -1,2 +1,2 @@
 # DatascienceNml
-Datascience and ML in Python
+Titanic data analysis
