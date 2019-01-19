@@ -7,7 +7,7 @@ Created on Sat Dec 22 23:38:55 2018
 
 '''
 The Titanic data file is 
-    E:/datascience/pythontut/DataScienceInPy/dataExplorationNml/titanicData/titanic.csv
+    E:/datascienceProject/DatascienceNml/MLProjects/titanicDataAnalysis/titanicData/titanic.csv
 having below fields 
 
  PassengerId,Survived,Pclass,Name,Sex,Age,SibSp,Parch,Ticket,Fare,Cabin,Embarked
@@ -50,7 +50,7 @@ import pandas as pd
 import numpy as np
 import os
 
-thePath = 'E:/datascience/pythontut/DataScienceInPy/dataExplorationNml/titanicData/'
+thePath = 'E:/datascienceProject/DatascienceNml/MLProjects/titanicDataAnalysis/titanicData/'
 theFile = 'titanic.csv'
 
 
@@ -544,9 +544,9 @@ titanicDF = titanicDF[allColumns]
 titanicDF.info() # Now we can see there is int and float data in the dataframe
 
 # Save the processed data into a file  
-#  E:/datascience/pythontut/DataScienceInPy/dataExplorationNml/titanicData/titanicOutputDataForML/
+# E:/datascienceProject/DatascienceNml/MLProjects/titanicDataAnalysis/titanicData/titanicOutputDataForML/
 
-thePath = 'E:/datascience/pythontut/DataScienceInPy/dataExplorationNml/titanicData/titanicOutputDataForML/'
+thePath = 'E:/datascienceProject/DatascienceNml/MLProjects/titanicDataAnalysis/titanicData/titanicOutputDataForML/'
 theFile = 'titanicProcessed.csv'
 
 def saveFile(Path,File):
