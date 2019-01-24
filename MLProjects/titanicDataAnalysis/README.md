@@ -49,6 +49,9 @@
   <tr>	
 	<td>5</td><td>0</td><td>3</td><td>Allen, Mr. William Henry</td><td>male</td><td>35</td><td>0</td><td>0</td><td>373450</td><td>8.05</td><td></td><td>S</td>
   </tr>
+  <tr>
+  	<td>6 </td><td>	0 </td><td>	3  </td><td>	Moran, Mr. James  </td><td>	male  </td><td>	 </td> <td>		0	 </td><td> 0  </td><td>	330877  </td><td>	8.4583	 </td><td>	 </td><td> Q  </td>
+   </tr>
 </table>
 
 </body>
