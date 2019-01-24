@@ -28,15 +28,6 @@
 
 |5|0|3|Allen, Mr. William Henry|male|35|0|0|373450|8.05||S|
 
-|6|0|3|Moran, Mr. James|male||0|0|330877|8.4583||Q|
-
-|7|0|1|McCarthy, Mr. Timothy J|male|54|0|0|17463|51.8625|E46|S|
-
-|8|0|3|Palsson, Master. Gosta Leonard|male|2|3|1|349909|21.075||S|
-
-|9|1|3|Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)|female|27|0|2|347742|11.1333||S|
-
-|10|1|2|Nasser, Mrs. Nicholas (Adele Achem)|female|14|1|0|237736|30.0708||C|
 
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
