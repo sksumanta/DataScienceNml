@@ -35,7 +35,7 @@
 	<th>Embarked</th>
   </tr>
   <tr>
-	<td>1</td><td>0</td><td>3</td><td>Braund, Mr. Owen Harris</td><td>male</td><td>22</td><td>1</td><td>0</td><td>A/5</td> 21171</td><td>7.25</td><td></td><td>S</td>
+	<td>1</td><td>0</td><td>3</td><td>Braund, Mr. Owen Harris</td><td>male</td><td>22</td><td>1</td><td>0</td><td>A/5</td> <td>21171</td><td>7.25</td><td></td><td>S</td>
   </tr>
   <tr>	
 	<td>2</td><td>1</td><td>1</td><td>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td><td>female</td><td>38</td><td>1</td><td>0</td><td>PC 17599</td><td>71.2833</td><td>C85</td><td>C</td>
