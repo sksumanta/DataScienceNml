@@ -13,7 +13,7 @@
     Fare : Amount paid by the passenger
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
-
+##### Sample data
 |PassengerId|Survived|Pclass|Name|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked|
 
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
