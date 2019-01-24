@@ -38,4 +38,8 @@
 
 |10|1|2|Nasser, Mrs. Nicholas (Adele Achem)|female|14|1|0|237736|30.0708||C|
 
-![pclass](https://github.com/sksumanta/DatascienceNml/tree/master/AllProjectImages/titanic/pclass1.PNG)
+![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
+
+
+
+
