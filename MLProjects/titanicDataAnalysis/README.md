@@ -14,8 +14,6 @@
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
 
-user=> (table (meta #'doc))
-
 |PassengerId|Survived|Pclass|Name|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked|
 
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
