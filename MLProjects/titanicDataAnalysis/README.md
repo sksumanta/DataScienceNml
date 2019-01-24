@@ -13,20 +13,38 @@
     Fare : Amount paid by the passenger
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
-##### Sample data
-|PassengerId|Survived|Pclass|Name|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked|
 
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | ---: |
+<!DOCTYPE html>
+<html>
+<body>
 
-|1|0|3|Braund, Mr. Owen Harris|male|22|1|0|A/5 21171|7.25||S|
+<h2> Sample data</h2>
 
-|2|1|1|Cumings, Mrs. John Bradley (Florence Briggs Thayer)|female|38|1|0|PC 17599|71.2833|C85|C|
+<table style="width:100%">
+  <tr>
+    <th>PassengerId</th>
+	<th>Survived</th> 
+    <th>Pclass</th> 
+    <th>Name</th>
+	<th>Sex</th>
+    <th>Age</th> 
+    <th>Parch</th>
+	<th>Ticket</th>
+    <th>Fare</th> 
+    <th>Cabin</th>
+	<th>Embarked</th>
+  </tr>
+  <tr>
+	<td>1</td><td>0</td><td>3</td><td>Braund, Mr. Owen Harris</td><td>male</td><td>22</td><td>1</td><td>0</td><td>A/5</td> 21171</td><td>7.25</td><td></td><td>S</td>
+	<td>2</td><td>1</td><td>1</td><td>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td><td>female</td><td>38</td><td>1</td><td>0</td><td>PC 17599</td><td>71.2833</td><td>C85</td><td>C</td>
+	<td>3</td><td>1</td><td>3</td><td>Heikkinen, Miss. Laina</td><td>female</td><td>26</td><td>0</td><td>0</td><td>STON/O2. 3101282</td><td>7.925</td><td></td><td>S</td>
+	<td>4</td><td>1</td><td>1</td><td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><td>female</td><td>35</td><td>1</td><td>0</td><td>113803</td><td>53.1</td><td>C123</td><td>S</td>
+	<td>5</td><td>0</td><td>3</td><td>Allen, Mr. William Henry</td><td>male</td><td>35</td><td>0</td><td>0</td><td>373450</td><td>8.05</td><td></td><td>S</td>
+  </tr>
+</table>
 
-|3|1|3|Heikkinen, Miss. Laina|female|26|0|0|STON/O2. 3101282|7.925||S|
-
-|4|1|1|Futrelle, Mrs. Jacques Heath (Lily May Peel)|female|35|1|0|113803|53.1|C123|S|
-
-|5|0|3|Allen, Mr. William Henry|male|35|0|0|373450|8.05||S|
+</body>
+</html>
 
 
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
