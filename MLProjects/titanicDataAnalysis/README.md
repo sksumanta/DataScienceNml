@@ -18,7 +18,7 @@
 <html>
 <body>
 
-<h2> Sample data</h2>
+<h5> Sample data</h5>
 
 <table style="width:100%">
   <tr>
