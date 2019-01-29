@@ -57,6 +57,28 @@
 </body>
 </html>
 
+##### Read file 
+import pandas as pd
+
+import os
+
+def readFileToDF(Path,File):
+
+    file=os.path.join(Path, File)
+    
+    fileDF = pd.read_csv(file,delimiter=",")
+    
+    return fileDF
+    
+titanicDF= readFileToDF(thePath,theFile)
+
+print(titanicDF.shape)
+
+###### The shape of data frame "titanicDF" is (891, 12)
+
+
+
+
 
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
