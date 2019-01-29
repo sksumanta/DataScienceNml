@@ -362,6 +362,8 @@ ax = titanicDF['familySize'].plot(kind='hist', figsize=(15,10),
 
 titanicDF.groupby(['familySize' , 'Survived']).Survived.count().unstack()
 
+import seaborn as sns
+sns.factorplot('familySize', 'ageState', data=titanicDF, hue='Survived')
 
 #Lets check 'name' column to create a new feature 'title'
 
