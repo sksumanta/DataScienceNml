@@ -102,6 +102,12 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 
 ![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG) 
 
+###### # Visualize average age of male and female passanger per class
+
+![average age of passanger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
+
+
+
 ###### What deck/cabin were the passengers on and how does that relate to their class? Did the deck have an effect on the passengers survival rate? 
 
 
