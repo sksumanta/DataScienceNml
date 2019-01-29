@@ -14,6 +14,20 @@
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
     
+1.) Who were the passengers on the Titanic? (Ages,Gender,Class,..etc)
+
+2.) What deck/cabin were the passengers on and how does that relate to their class?
+
+3.) Where did the passengers come from?
+
+4.) Who was alone and who was with family?
+
+5.) What factors helped someone survive the sinking?
+
+6.) Did the deck have an effect on the passengers survival rate? 
+
+7.) Did family size has any effcet on survival rate? 
+
 ###### # Visualize of Fare column
 
 ![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
