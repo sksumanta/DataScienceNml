@@ -501,14 +501,122 @@ titanicDF.groupby(['familySize' , 'Survived']).Survived.count().unstack()
 </tbody>
 </table>
 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # create a new feature 'title' from 'name' column</p>
+
+namLis=[]
+
+for nam, age,sex in zip(titanicDF['Name'],titanicDF['ageState'],titanicDF['Sex']):
+
+    nam = nam.split(",")[1].split(".")[0]
+
+    titleLis=['Master','Miss','Mr','Mrs',' Capt']
+    
+    if nam not in titleLis:
+    
+        if age == 'Adult':
+	
+            if sex == 'male':
+	    
+                namLis.append('Mr')
+		
+            else:
+	    
+                namLis.append('Mrs')
+		
+        else:
+	
+            if sex == 'male':
+	    
+                namLis.append('Master')
+		
+            else:
+	    
+                namLis.append('Miss')
+		
+    else:
+    
+        namLis.append(nam.strip(' ')) 
+
+titanicDF['title'] = namLis
+
+titanicDF.groupby(['title']).title.unique()
+
+titanicDF.groupby(['title']).title.count()
+
+<table>
+<tbody>
+<tr>
+<td>title</td>
+</tr>
+<tr>
+<td>Capt</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Master</td>
+<td>58</td>
+</tr>
+<tr>
+<td>Miss</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Mr</td>
+<td>518</td>
+</tr>
+<tr>
+<td>Mrs</td>
+<td>259</td>
+</tr>
+<tr>
+<td>Name: title, dtype: int64</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # create new column 'motherOrNot' considering ‘Parch' , 'sex' , 'ageState' columns</p>
+
+titanicDF['motherOrNot'] = np.where( ( (titanicDF.Sex=='female') & (titanicDF.ageState=='Adult') & (titanicDF.Parch > 0) ) , 1 , 0)
+
+titanicDF.groupby(['motherOrNot']).motherOrNot.count() # 71 mother was there
+
+titanicDF.groupby(['motherOrNot','Survived']).Survived.count().unstack()
+
+<table>
+<tbody>
+<tr>
+<td>Survived</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>motherOrNot</td>
+</tr>
+<tr>
+<td>0</td>
+<td>523</td>
+<td>286</td>
+</tr>
+<tr>
+<td>1</td>
+<td>26</td>
+<td>56</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # categorise the passengers into different fare groups </p>
 
 
+titanicDF['FareCategorise'] = pd.qcut(titanicDF.Fare , 4 , labels = ['veryLow' , 'low' , 'high', 'veryHigh'] )
 
+ax = titanicDF['FareCategorise'].value_counts().plot(kind='bar' , figsize=(15,10) ,
+                                 title = "Fare catagories")
 
+ax.set_xlabel("category of fare ")
+ax.set_ylabel("frequency of fare ")
 
-
-
-
+![fare category](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/fareCatagory.PNG)
 
 
 
