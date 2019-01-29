@@ -86,8 +86,203 @@ print(titanicDF.info())
 ###### # Each columns data-type and count of not-null values
 <p>&lt;class 'pandas.core.frame.DataFrame'&gt;<br />Int64Index:&nbsp; &nbsp; 891 entries,&nbsp; &nbsp;1 to 891<br />Data columns&nbsp; (total 11 columns):<br />Pclass&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Name&nbsp; &nbsp;891&nbsp; non-null&nbsp; object<br />Sex&nbsp; &nbsp; &nbsp; 891&nbsp; non-null&nbsp; object<br />Age&nbsp; &nbsp; &nbsp; 714&nbsp; non-null&nbsp; float64<br />SibSp&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Parch&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Ticket&nbsp; 891&nbsp; non-null&nbsp; object<br />Fare&nbsp; &nbsp; 891&nbsp; non-null&nbsp; float64<br />Cabin&nbsp; 206&nbsp; non-null&nbsp; object<br />Embarked&nbsp; 889 non-null&nbsp; object<br />Survived&nbsp; &nbsp; 891 non-null&nbsp; int64<br />dtypes: float64(2), int64(4), object(5)<br />memory usage:&nbsp; 66.1+ KB<br />None</p>
 
+titanicDF.describe( include = 'all' )
 
-
+###### # statistics for all columns.
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>uniquetopfreqmeanstdmin25%50%75%max</p>
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>Pclass</td>
+<td>Name</td>
+<td>Sex</td>
+<td>Age</td>
+<td>SibSp</td>
+<td>Parch</td>
+<td>Ticket</td>
+<td>Fare</td>
+<td>Cabin</td>
+<td>Embarked</td>
+<td>Survived</td>
+</tr>
+<tr>
+<td>count</td>
+<td>891.0</td>
+<td>891</td>
+<td>891</td>
+<td>714.0</td>
+<td>891.0</td>
+<td>891.0</td>
+<td>891</td>
+<td>891.0</td>
+<td>204</td>
+<td>889</td>
+<td>891.0</td>
+</tr>
+<tr>
+<td>unique</td>
+<td>nan</td>
+<td>891</td>
+<td>2</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>681</td>
+<td>nan</td>
+<td>147</td>
+<td>3</td>
+<td>nan</td>
+</tr>
+<tr>
+<td>top</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>&nbsp;</td>
+<td>Lesurer, Mr. Gustave J</td>
+<td>male</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>347082 nan</td>
+<td>&nbsp;</td>
+<td>B96 B98</td>
+<td>S</td>
+<td>nan</td>
+</tr>
+<tr>
+<td>freq</td>
+<td>nan</td>
+<td>&nbsp;</td>
+<td>1</td>
+<td>577</td>
+<td>nan</td>
+<td>nan</td>
+<td>nan</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>7</td>
+<td>nan</td>
+<td>4</td>
+<td>644</td>
+<td>nan</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>2.308641975308642</td>
+<td>nan nan</td>
+<td>&nbsp;</td>
+<td>29.69911764705882</td>
+<td>0.5230078563411896</td>
+<td>0.38159371492704824</td>
+<td>&nbsp;</td>
+<td>32.2042079685746</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>nan nan 0.3838383838383838</td>
+</tr>
+<tr>
+<td>std</td>
+<td>0.8360712409770513</td>
+<td>nan nan</td>
+<td>&nbsp;</td>
+<td>14.526497332334044</td>
+<td>1.1027434322934275</td>
+<td>0.8060572211299559</td>
+<td>&nbsp;</td>
+<td>49.693428597180905</td>
+<td>&nbsp;</td>
+<td>nan nan</td>
+<td>0.4865924542648585</td>
+</tr>
+<tr>
+<td>min</td>
+<td>&nbsp;</td>
+<td>1.0</td>
+<td>&nbsp;</td>
+<td>nan nan 0.42</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>&nbsp;</td>
+<td>0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>nan nan 0.0</td>
+</tr>
+<tr>
+<td>25%</td>
+<td>&nbsp;</td>
+<td>2.0</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan &lt;/td</td>
+<td>20.125</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>&nbsp;</td>
+<td>7.9104</td>
+<td>nan nan</td>
+<td>&nbsp;</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>&nbsp;</td>
+<td>3.0</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan</td>
+<td>28.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>&nbsp;</td>
+<td>14.4542</td>
+<td>&nbsp;</td>
+<td>nan nan</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>75%</td>
+<td>&nbsp;</td>
+<td>3.0</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan</td>
+<td>38.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>&nbsp;</td>
+<td>31.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>max</td>
+<td>&nbsp;</td>
+<td>3.0</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan</td>
+<td>80.0</td>
+<td>8.0</td>
+<td>6.0</td>
+<td>&nbsp;</td>
+<td>512.3292</td>
+<td>&nbsp;</td>
+<td>nan</td>
+<td>nan</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
 
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
