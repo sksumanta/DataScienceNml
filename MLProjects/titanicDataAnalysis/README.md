@@ -92,7 +92,7 @@ titanicDF.describe( include = 'all' )
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>uniquetopfreqmeanstdmin25%50%75%max</p>
+<p>&nbsp;</p>
 <table>
 <tbody>
 <tr>
@@ -265,7 +265,6 @@ titanicDF.describe( include = 'all' )
 </tr>
 </tbody>
 </table>
-
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
 
