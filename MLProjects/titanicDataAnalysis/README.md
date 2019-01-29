@@ -83,7 +83,7 @@ print(titanicDF.shape)
 
 ###### Visualize different columns data distribution.
 print(titanicDF.info())  # each columns data-type and count of not-null values
-<p>&lt;class 'pandas.core.frame.DataFrame'&gt;<br />Int64Index: 891 entries, 1 to 891<br />Data columns (total 11 columns):<br />Pclass 891 non-null int64<br />Name 891 non-null object<br />Sex 891 non-null object<br />Age 714 non-null float64<br />SibSp 891 non-null int64<br />Parch 891 non-null int64<br />Ticket 891 non-null object<br />Fare 891 non-null float64<br />Cabin 206 non-null object<br />Embarked 889 non-null object<br />Survived 891 non-null int64<br />dtypes: float64(2), int64(4), object(5)<br />memory usage: 66.1+ KB<br />None</p>
+<p>&lt;class 'pandas.core.frame.DataFrame'&gt;<br />Int64Index:&nbsp; &nbsp; 891 entries,&nbsp; &nbsp;1 to 891<br />Data columns&nbsp; (total 11 columns):<br />Pclass&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Name&nbsp; &nbsp;891&nbsp; non-null&nbsp; object<br />Sex&nbsp; &nbsp; &nbsp; 891&nbsp; non-null&nbsp; object<br />Age&nbsp; &nbsp; &nbsp; 714&nbsp; non-null&nbsp; float64<br />SibSp&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Parch&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Ticket&nbsp; 891&nbsp; non-null&nbsp; object<br />Fare&nbsp; &nbsp; 891&nbsp; non-null&nbsp; float64<br />Cabin&nbsp; 206&nbsp; non-null&nbsp; object<br />Embarked&nbsp; 889 non-null&nbsp; object<br />Survived&nbsp; &nbsp; 891 non-null&nbsp; int64<br />dtypes: float64(2), int64(4), object(5)<br />memory usage:&nbsp; 66.1+ KB<br />None</p>
 
 
 
