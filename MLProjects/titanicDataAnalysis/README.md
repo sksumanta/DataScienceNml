@@ -226,4 +226,20 @@ titanicDF['familySize'].max()
 
 ###### What factors helped someone survive the sinking? 
 
+<table>
+<tbody>
+<tr>
+<td>confusion Matrix</td>
+</tr>
+<tr>
+<td>98</td>
+<td>12</td>
+</tr>
+<tr>
+<td>16</td>
+<td>53</td>
+</tr>
+</tbody>
+</table>
+
 
