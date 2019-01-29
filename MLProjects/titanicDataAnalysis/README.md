@@ -232,7 +232,6 @@ titanicDF.describe( include = 'all' )
 </tr>
 <tr>
 <td>75%</td>
-<td>&nbsp;</td>
 <td>3.0</td>
 <td>nan</td>
 <td>nan</td>
