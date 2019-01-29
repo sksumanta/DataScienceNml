@@ -618,5 +618,63 @@ ax.set_ylabel("frequency of fare ")
 
 ![fare category](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/fareCatagory.PNG)
 
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # creating cabinAlpha feature from alphanumeric cabin </p>
+
+titanicDF.groupby(['Cabin']).Cabin.unique()
+
+titanicDF.loc[titanicDF.Cabin == 'T' , 'Cabin'] = np.NaN
+
+def getCabinChar(cabinVal):
+
+    return np.where(pd.notnull(cabinVal) ,  str(cabinVal)[0].upper() , 'K'  )  
+    
+titanicDF['cabinAlpha'] = titanicDF['Cabin'].map(lambda x : getCabinChar(x))
+
+titanicDF.groupby(['cabinAlpha']).cabinAlpha.count()
+
+titanicDF.groupby(['Survived','cabinAlpha']).Survived.count().unstack()
+
+
+<table>
+<tbody>
+<tr>
+<td>cabinAlpha</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>K</td>
+</tr>
+<tr>
+<td>Survived</td>
+</tr>
+<tr>
+<td>0</td>
+<td>8</td>
+<td>14</td>
+<td>24</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>2</td>
+<td>480</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>35</td>
+<td>35</td>
+<td>25</td>
+<td>24</td>
+<td>8</td>
+<td>2</td>
+<td>206</td>
+</tr>
+</tbody>
+</table>
+
 
 
