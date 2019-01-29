@@ -260,6 +260,12 @@ titanicDF.describe( include = 'all' )
 </tr>
 </tbody>
 </table>
+
+
+
+
+
+
 ![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
 
