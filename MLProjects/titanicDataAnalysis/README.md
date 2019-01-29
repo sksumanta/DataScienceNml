@@ -155,6 +155,14 @@ For this fill the nan value of cabin column to 'K' and keep only first upper cas
 
 ###### Who was alone and who was with family? 
 
+titanicDF['familySize'] = titanicDF['SibSp'] + titanicDF['Parch'] + 1 # 1 is added for person itself
+
+titanicDF['familySize'].max()
+
+###### # Visualize the count of passenger per class
+
+![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySize.PNG)
+
 ###### Did family size has any effcet on survival rate? 
 
 ###### What factors helped someone survive the sinking?
