@@ -354,10 +354,9 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 </tbody>
 </table>
 
-titanicDF['Embarked'].fillna('S' , inplace = True)   # fill the passenger embark point as 'S'
+titanicDF['Embarked'].fillna('S' , inplace = True)  		 # fill the passenger embark point as 'S'
 
-
-<p><span style="color: #008080;">&lt;p&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; # fill null value for Age column&lt;/p&gt;</span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # fill null value for Age column</p>
 
 nullInAge = titanicDF[titanicDF.Age.isnull()]  
 
