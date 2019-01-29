@@ -74,7 +74,7 @@ titanicDF= readFileToDF(thePath,theFile)
 
 print(titanicDF.shape)
 
-###### The shape of data frame "titanicDF" is (891, 12)
+###### # The shape of data frame "titanicDF" is (891, 12)
 
 
 
