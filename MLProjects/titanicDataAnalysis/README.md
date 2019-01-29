@@ -13,6 +13,8 @@
     Fare : Amount paid by the passenger
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
+    
+###### # Visualize of Fare column
 
 ![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
 
