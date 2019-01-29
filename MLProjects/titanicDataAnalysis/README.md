@@ -224,6 +224,6 @@ titanicDF['familySize'].max()
 </tbody>
 </table>
 
-###### What factors helped someone survive the sinking?
+###### What factors helped someone survive the sinking? 
 
 
