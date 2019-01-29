@@ -161,7 +161,7 @@ titanicDF['familySize'] = titanicDF['SibSp'] + titanicDF['Parch'] + 1 # 1 is add
 
 titanicDF['familySize'].max()
 
-###### # Visualize family size wrt servival rate
+###### # Visualize family size 
 
 ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySize.PNG)
 
@@ -224,6 +224,10 @@ titanicDF['familySize'].max()
 </tbody>
 </table>
 
+###### # Visualize family size wrt servival rate
+
+ ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySizewrtservive.PNG)
+ 
 ###### What factors helped someone survive the sinking? 
 
 <table>
