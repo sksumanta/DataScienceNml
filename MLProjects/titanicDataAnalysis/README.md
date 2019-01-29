@@ -382,8 +382,25 @@ for rowIndex , predAge in zip(titanicRowIndex , predictAge['Age'] ):
 
 	titanicDF.iloc[rowIndex-1 , 3 ] = abs(predAge)
 
+###### # Treatment of outliers 
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Treatment of Fare column outlier</p>
+
+import numpy as np	
+
+fareOutlier = titanicDF[titanicDF['Fare'] == titanicDF['Fare'].max()]
+
+transformFare = np.log(titanicDF['Fare']+1)
+
+ax = transformFare.plot(kind = 'hist' , figsize =(15,10) 
+                        , title="transform fare using log transformation" , bins = 10)
+
+ax.set_xlabel('no of passanger ')
+
+ax.set_ylabel('fare of passanger')
 
 
+![fare log transformation](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Farelogtrnsform.png)
 
 
 
