@@ -273,10 +273,17 @@ ax.set_ylabel("No of passanger")
 ![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
 
 
+###### Visualize the count of passanger per class
+
+ax = titanicDF['Pclass'].value_counts().plot(kind='bar' , 
+                                    figsize=(15,10), 
+                                    title = "count of passanger class" )
+
+ax.set_xlabel("pclass")
+ax.set_ylabel("count")
 
 
-
-![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
+![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
 
 
