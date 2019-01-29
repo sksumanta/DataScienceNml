@@ -230,22 +230,22 @@ titanicDF['familySize'].max()
  
 ###### What factors helped someone survive the sinking? 
 
-<p>&nbsp; &nbsp; &nbsp; Using PCA get the minimum number of features which we need to transform the training set and test set. </p>
+Using PCA get the minimum number of features which we need to transform the training set and test set. 
 
-pca = PCA(n_components = 15 )
+<p>&nbsp; &nbsp; &nbsp;  pca = PCA(n_components = 15 ) </p>
 
-<p>&nbsp; &nbsp; &nbsp; Then create the model to predict the accuracy.</p>
+Then create the model to predict the accuracy.
 
-from sklearn.metrics import accuracy_score
+<p>&nbsp; &nbsp; &nbsp;  from sklearn.metrics import accuracy_score </p>
 
-accuracy_score(ytest , yPredict)
+<p>&nbsp; &nbsp; &nbsp;  accuracy_score(ytest , yPredict) </p>
 	<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # accuracy score 0.8379 &nbsp;</p>
 	
-<p>&nbsp; &nbsp; &nbsp; confusion matrix will give  true positive , true negative , false positive and false negative result </p>
+confusion matrix will give  true positive , true negative , false positive and false negative result
 
-from sklearn.metrics import confusion_matrix, accuracy_score,classification_report
+<p>&nbsp; &nbsp; &nbsp; from sklearn.metrics import confusion_matrix, accuracy_score,classification_report  </p>
 
-confusionMatrixLreg = confusion_matrix(ytest , yPredict )
+<p>&nbsp; &nbsp; &nbsp;  confusionMatrixLreg = confusion_matrix(ytest , yPredict )  </p>
 
 <table>
 <tbody>
