@@ -722,6 +722,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   feature normalization </p>
 
 scaler = MinMaxScaler()
+
 XtrainedScaled = scaler.fit_transform(Xtrain)
 
 XtrainedScaled[:,0].min(),XtrainedScaled[:,0].max() 
@@ -733,25 +734,35 @@ XtestScaled = scaler.transform(Xtest)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   feature standardization </p>
 
 scaler = StandardScaler()
+
 XtrainedScaled = scaler.fit_transform(Xtrain)
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #  standardize the test data</p>
+
 XtestScaled =  scaler.transform(Xtest)
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   create the model after standardization </p>
 
 from sklearn.linear_model import LogisticRegression
+
 logisReg = LogisticRegression(random_state=0)
 
 from sklearn.model_selection import GridSearchCV
+
 alpha = [1.0,10.0,50.0,100.0,1000.0]
+
 penalties= ['l1','l2']
+
 gridParamters = {'C':alpha , 'penalty': penalties}
+
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   cv=k will perform k-fold cross validation </p>
+
 optimLogisModel = GridSearchCV(logisReg , param_grid=gridParamters , cv=3) 
+
 optimLogisModel.fit(Xtrain, ytrain)
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   best_params_ give model paramerters for which we will get optimize model</p>
+
 optimLogisModel.best_params_  
 
 yPredict = optimLogisModel.predict(Xtest)
@@ -759,6 +770,7 @@ yPredict = optimLogisModel.predict(Xtest)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   Accuracy of optimized logistic model is </p>
 
 from sklearn.metrics import accuracy_score
+
 accuracy_score(ytest , yPredict)  
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #  accuracy score  is  0.8379888268156425</p>
@@ -768,6 +780,7 @@ accuracy_score(ytest , yPredict)
 from sklearn.metrics import confusion_matrix, accuracy_score,classification_report
 
 confusionMatrixLreg = confusion_matrix(ytest , yPredict )
+
 print(confusionMatrixLreg)
 
 <table>
