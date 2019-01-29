@@ -72,9 +72,14 @@ def readFileToDF(Path,File):
     
 titanicDF= readFileToDF(thePath,theFile)
 
+titanicDF = titanicDF.loc[:,['PassengerId','Pclass','Name','Sex','Age','SibSp','Parch','Ticket','Fare','Cabin','Embarked','Survived']]
+
+###### # As PassengerId is the serial no so in below 'PassengerId' used as row index
+
+titanicDF=titanicDF.set_index(titanicDF.columns[0])
 print(titanicDF.shape)
 
-###### # The shape of data frame "titanicDF" is (891, 12)
+###### # The shape of data frame "titanicDF" is (891, 11)
 
 
 
