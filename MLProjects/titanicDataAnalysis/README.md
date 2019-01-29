@@ -759,7 +759,7 @@ yPredict = optimLogisModel.predict(Xtest)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   Accuracy of optimized logistic model is </p>
 
 from sklearn.metrics import accuracy_score
-accuracy_score(ytest , yPredict)
+accuracy_score(ytest , yPredict)  ###### #  accuracy score  is  0.8379888268156425
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   confusion metrics </p>
 
@@ -767,3 +767,11 @@ from sklearn.metrics import confusion_matrix, accuracy_score,classification_repo
 
 confusionMatrixLreg = confusion_matrix(ytest , yPredict )
 print(confusionMatrixLreg)
+
+<table>
+<tbody>
+<tr><td>confusion matrix</td></tr>
+<tr><td>97</td><td> 13</td></tr>
+<tr><td>16</td><td> 53</td></tr>
+</tbody>
+</table>
