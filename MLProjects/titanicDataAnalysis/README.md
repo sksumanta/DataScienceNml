@@ -159,11 +159,68 @@ titanicDF['familySize'] = titanicDF['SibSp'] + titanicDF['Parch'] + 1 # 1 is add
 
 titanicDF['familySize'].max()
 
-###### # Visualize the count of passenger per class
+###### # Visualize family size wrt servival rate
 
 ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySize.PNG)
 
 ###### Did family size has any effcet on survival rate? 
+<table>
+<tbody>
+<tr>
+<td>Survived</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>familySize</td>
+</tr>
+<tr>
+<td>1</td>
+<td>374.0</td>
+<td>163.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>72.0</td>
+<td>89.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>43.0</td>
+<td>59.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8.0</td>
+<td>21.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>19.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8.0</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>11</td>
+<td>7.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
 
 ###### What factors helped someone survive the sinking?
 
