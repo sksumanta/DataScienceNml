@@ -96,7 +96,7 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 
 ###### # Visualize of passenger Fare
 
-![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Farewrtpclass.png)
+![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/farewrtpclass.PNG)
 
 ###### # Visualize the count of passenger per class
 
