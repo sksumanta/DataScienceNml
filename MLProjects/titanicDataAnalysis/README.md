@@ -14,7 +14,53 @@
     Cabin : Cabin of the passenger
     Embarked : point of embankment/boarding point ( C  , Q , S)
     
-1.) Who were the passengers on the Titanic? (Ages,Gender,Class,..etc)
+#####  Who were the passengers on the Titanic? (Ages,Gender,Class,..etc) 
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp Sample data in Titanic data set </p>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h5> Sample data</h5>
+
+<table style="width:100%">
+  <tr>
+    <th>PassengerId</th>
+	<th>Survived</th> 
+    <th>Pclass</th> 
+    <th>Name</th>
+	<th>Sex</th>
+    <th>Age</th> 
+    <th>Parch</th>
+	<th>Ticket</th>
+    <th>Fare</th> 
+    <th>Cabin</th>
+	<th>Embarked</th>
+  </tr>
+  <tr>
+	<td>1</td><td>0</td><td>3</td><td>Braund, Mr. Owen Harris</td><td>male</td><td>22</td><td>1</td><td>0</td><td>A/5</td> <td>21171</td><td>7.25</td><td></td><td>S</td>
+  </tr>
+  <tr>	
+	<td>2</td><td>1</td><td>1</td><td>Cumings, Mrs. John Bradley (Florence Briggs Thayer)</td><td>female</td><td>38</td><td>1</td><td>0</td><td>PC 17599</td><td>71.2833</td><td>C85</td><td>C</td>
+  </tr>
+  <tr>
+	<td>3</td><td>1</td><td>3</td><td>Heikkinen, Miss. Laina</td><td>female</td><td>26</td><td>0</td><td>0</td><td>STON/O2. 3101282</td><td>7.925</td><td></td><td>S</td>
+  </tr>
+  <tr>
+	<td>4</td><td>1</td><td>1</td><td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td><td>female</td><td>35</td><td>1</td><td>0</td><td>113803</td><td>53.1</td><td>C123</td><td>S</td>
+  </tr>
+  <tr>	
+	<td>5</td><td>0</td><td>3</td><td>Allen, Mr. William Henry</td><td>male</td><td>35</td><td>0</td><td>0</td><td>373450</td><td>8.05</td><td></td><td>S</td>
+  </tr>
+  <tr>
+  	<td>6 </td><td>	0 </td><td>	3  </td><td>	Moran, Mr. James  </td><td>	male  </td><td>	 </td> <td>		0	 </td><td> 0  </td><td>	330877  </td><td>	8.4583	 </td><td>	 </td><td> Q  </td>
+   </tr>
+</table>
+
+</body>
+</html>
+
+
 
 2.) What deck/cabin were the passengers on and how does that relate to their class?
 
