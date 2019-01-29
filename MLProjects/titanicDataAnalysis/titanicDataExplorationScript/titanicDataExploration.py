@@ -191,6 +191,9 @@ male    41.864934  31.083944  25.730884
 
 titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack() # unstack() show output in table format
 
+Psex = titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack()
+import seaborn as sns
+ax = sns.lineplot( data=Psex)
 
 # Step-4 Delete null data or imputation (fill) of null data. Also deal with outliers.  
 
