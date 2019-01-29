@@ -280,6 +280,7 @@ ax = titanicDF['Pclass'].value_counts().plot(kind='bar' ,
                                     title = "count of passanger class" )
 
 ax.set_xlabel("pclass")
+
 ax.set_ylabel("count")
 
 
