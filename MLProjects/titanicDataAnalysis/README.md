@@ -102,7 +102,7 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 
 ![passenger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG) 
 
-###### # Visualize age range of male and female passenger per class
+###### # Visualize average age  of male and female passenger per class
 
 ![age range per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
 
