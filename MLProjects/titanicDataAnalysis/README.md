@@ -297,3 +297,19 @@ ax = sns.lineplot( data=Psex)
 
 
 ![average age of passanger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
+
+
+###### visualization of fare with respect to passanger class
+
+ax = titanicDF.plot.scatter(x='Pclass' , y='Fare' ,
+                            title = "Fare wrt passanger class")
+
+ax.set_xlabel("Passanger class")
+
+ax.set_ylabel("Fare")
+
+![fare wrt passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Farewrtpclass.png)
+
+
+
+
