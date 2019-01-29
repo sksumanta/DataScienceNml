@@ -346,6 +346,8 @@ titanicDF['ageState'].value_counts()
 
 titanicDF.groupby(['ageState','Survived']).ageState.count().unstack()
 
+import seaborn as sns
+sns.factorplot('ageState', 'Survived', data=titanicDF, hue='Sex') 
 
 # lets check 'SibSp','Parch' column to create a new feature 
 
