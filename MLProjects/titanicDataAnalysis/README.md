@@ -315,7 +315,7 @@ ax.set_ylabel("Fare")
 
 ###### # Delete or imputation of null data
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fill the null value for Embarked column</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  # Fill the null value for Embarked column</p>
 
 nullRowOfembarked  = titanicDF[titanicDF.Embarked.isnull()]
 
@@ -355,6 +355,40 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 </table>
 
 titanicDF['Embarked'].fillna('S' , inplace = True)   # fill the passenger embark point as 'S'
+
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   # fill null value for Age column </p>
+
+nullInAge = titanicDF[titanicDF.Age.isnull()]  
+
+notnullData = titanicDF.dropna()
+
+xTrainData = notnullData.loc[:,['Pclass','Survived','SibSp','Parch','Fare']]
+
+yTrainData = notnullData.loc[:,'Age']
+
+xTestData = nullInAge.loc[:,['Pclass','Survived','SibSp','Parch','Fare']]
+
+from sklearn.linear_model import LinearRegression
+
+linReg  = LinearRegression()
+
+linReg.fit( xTrainData, yTrainData)  # model train 
+
+predictAge = pd.DataFrame( linReg.predict(xTestData) , columns=['Age'])
+
+titanicRowIndex = titanicDF[titanicDF.Age.isnull()].index.values.astype(int)
+
+for rowIndex , predAge in zip(titanicRowIndex , predictAge['Age'] ):
+
+    titanicDF.iloc[rowIndex-1 , 3 ] = abs(predAge)
+
+
+
+
+
+
+
 
 
 
