@@ -403,6 +403,109 @@ ax.set_ylabel('fare of passanger')
 ![fare log transformation](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Farelogtrnsform.png)
 
 
+###### # Feature engineering or create new feature
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Creating ageState feature using Age column </p>
+
+titanicDF['ageState'] = np.where(titanicDF['Age']<18 , 'Child' , 'Adult')
+
+titanicDF['ageState'].value_counts()
+
+titanicDF.groupby(['ageState','Survived']).ageState.count().unstack()
+
+<table>
+<tbody>
+<tr>
+<td>Survived</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>ageState</td>
+</tr>
+<tr>
+<td>Adult</td>
+<td>497</td>
+<td>281</td>
+</tr>
+<tr>
+<td>Child</td>
+<td>52</td>
+<td>61</td>
+</tr>
+</tbody>
+</table>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Creating familySize feature using 'SibSp' and 'Parch' column </p>
+
+titanicDF['familySize'] = titanicDF['SibSp'] + titanicDF['Parch'] + 1 
+
+titanicDF['familySize'].max() 
+
+titanicDF.groupby(['familySize' , 'Survived']).Survived.count().unstack()
+
+<table>
+<tbody>
+<tr>
+<td>Survived</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>familySize</td>
+</tr>
+<tr>
+<td>1</td>
+<td>374.0</td>
+<td>163.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>72.0</td>
+<td>89.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>43.0</td>
+<td>59.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>8.0</td>
+<td>21.0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>19.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>8.0</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>6.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>11</td>
+<td>7.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
 
 
 
