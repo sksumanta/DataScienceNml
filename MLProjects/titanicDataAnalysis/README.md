@@ -676,5 +676,25 @@ titanicDF.groupby(['Survived','cabinAlpha']).Survived.count().unstack()
 </tbody>
 </table>
 
+###### # convert categorical feature to numerical feature
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Binary encoding </p>
 
+titanicDF['encodeSex'] = np.where(titanicDF.Sex=='male' , 1 , 0) # if male it will give 1 else 0
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Label encoding </p>
+
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+
+titanicDF['lableEncodeEmbark'] = le.fit_transform(titanicDF.Embarked)
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # One-hot encoding </p>
+        
+titanicDF = pd.get_dummies(titanicDF,columns=['cabinAlpha', 'title' , 'FareCategorise', 'ageState'])
+
+###### # Drop the columns which is not required in future
+titanicDF.drop(['Name', 'SibSp' , 'Parch' ,'Cabin' , 'Ticket'
+                        , 'Sex' , 'Embarked' ] , axis = 1 , inplace = True)
+
+titanicDF.shape   	# now the shape of the dataframe is (891, 27)
 
