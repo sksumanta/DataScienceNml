@@ -261,6 +261,16 @@ titanicDF.describe( include = 'all' )
 </tbody>
 </table>
 
+###### visulaization of fare column distribution
+ax = titanicDF['Fare'].plot(kind='hist',
+                          figsize=(15,10),
+                           bins = 10 )
+
+ax.set_xlabel("passanger fare") 
+
+ax.set_ylabel("No of passanger")
+
+
 
 
 
