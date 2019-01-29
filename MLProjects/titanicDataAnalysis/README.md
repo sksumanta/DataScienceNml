@@ -287,5 +287,13 @@ ax.set_ylabel("count")
 ![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
 
+###### Visualize average age of male and female passanger per class
+
+Psex = titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack()
+
+import seaborn as sns
+
+ax = sns.lineplot( data=Psex)
 
 
+![average age of passanger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
