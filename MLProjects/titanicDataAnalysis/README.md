@@ -86,6 +86,8 @@ print(titanicDF.info())
 ###### # Each columns data-type and count of not-null values
 <p>&lt;class 'pandas.core.frame.DataFrame'&gt;<br />Int64Index:&nbsp; &nbsp; 891 entries,&nbsp; &nbsp;1 to 891<br />Data columns&nbsp; (total 11 columns):<br />Pclass&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Name&nbsp; &nbsp;891&nbsp; non-null&nbsp; object<br />Sex&nbsp; &nbsp; &nbsp; 891&nbsp; non-null&nbsp; object<br />Age&nbsp; &nbsp; &nbsp; 714&nbsp; non-null&nbsp; float64<br />SibSp&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Parch&nbsp; &nbsp;891&nbsp; non-null&nbsp; int64<br />Ticket&nbsp; 891&nbsp; non-null&nbsp; object<br />Fare&nbsp; &nbsp; 891&nbsp; non-null&nbsp; float64<br />Cabin&nbsp; 206&nbsp; non-null&nbsp; object<br />Embarked&nbsp; 889 non-null&nbsp; object<br />Survived&nbsp; &nbsp; 891 non-null&nbsp; int64<br />dtypes: float64(2), int64(4), object(5)<br />memory usage:&nbsp; 66.1+ KB<br />None</p>
 
+###### # describe statistics for all columns
+
 titanicDF.describe( include = 'all' )
 
 ###### # statistics for all columns.
@@ -261,7 +263,7 @@ titanicDF.describe( include = 'all' )
 </tbody>
 </table>
 
-###### visulaization of fare column distribution
+###### # visulaization of fare column distribution
 ax = titanicDF['Fare'].plot(kind='hist',
                           figsize=(15,10),
                            bins = 10 )
@@ -273,7 +275,7 @@ ax.set_ylabel("No of passanger")
 ![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
 
 
-###### Visualize the count of passanger per class
+###### # Visualize the count of passanger per class
 
 ax = titanicDF['Pclass'].value_counts().plot(kind='bar' , 
                                     figsize=(15,10), 
@@ -287,7 +289,7 @@ ax.set_ylabel("count")
 ![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
 
 
-###### Visualize average age of male and female passanger per class
+###### # Visualize average age of male and female passanger per class
 
 Psex = titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack()
 
@@ -299,7 +301,7 @@ ax = sns.lineplot( data=Psex)
 ![average age of passanger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
 
 
-###### visualization of fare with respect to passanger class
+###### # visualization of fare with respect to passanger class
 
 ax = titanicDF.plot.scatter(x='Pclass' , y='Fare' ,
                             title = "Fare wrt passanger class")
@@ -309,6 +311,50 @@ ax.set_xlabel("Passanger class")
 ax.set_ylabel("Fare")
 
 ![fare wrt passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Farewrtpclass.png)
+
+
+###### # Delete or imputation of null data
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fill the null value for Embarked column</p>
+
+nullRowOfembarked  = titanicDF[titanicDF.Embarked.isnull()]
+
+print(nullRowOfembarked)  # if there is any null value  isnull() will return true 
+
+titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
+<table>
+<tbody>
+<tr>
+<td>Embarked</td>
+<td>C</td>
+<td>Q</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Pclass</td>
+</tr>
+<tr>
+<td>1</td>
+<td>104.718529 </td>
+<td>90.000000</td>
+<td>70.364862</td>
+</tr>
+<tr>
+<td>2</td>
+<td>25.358335</td>
+<td>12.350000</td>
+<td>20.327439</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11.214083</td>
+<td>11.183393</td>
+<td>14.644083</td>
+</tr>
+</tbody>
+</table>
+
+titanicDF['Embarked'].fillna('S' , inplace = True)   # fill the passenger embark point as 'S'
 
 
 
