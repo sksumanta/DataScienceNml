@@ -373,14 +373,13 @@ from sklearn.linear_model import LinearRegression
 
 linReg  = LinearRegression()
 
-linReg.fit( xTrainData, yTrainData)  # model train 
+linReg.fit( xTrainData, yTrainData)  
 
 predictAge = pd.DataFrame( linReg.predict(xTestData) , columns=['Age'])
 
 titanicRowIndex = titanicDF[titanicDF.Age.isnull()].index.values.astype(int)
 
 for rowIndex , predAge in zip(titanicRowIndex , predictAge['Age'] ):
-
     titanicDF.iloc[rowIndex-1 , 3 ] = abs(predAge)
 
 
