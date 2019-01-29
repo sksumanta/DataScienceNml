@@ -15,13 +15,11 @@
     Embarked : point of embankment/boarding point ( C  , Q , S)
     
 #####  Who were the passengers on the Titanic? (Ages,Gender,Class,..etc) 
-<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp Sample data in Titanic data set </p>
-
 <!DOCTYPE html>
 <html>
 <body>
 
-<h5> Sample data</h5>
+<h5> Sample data  in Titanic data set </h5>
 
 <table style="width:100%">
   <tr>
