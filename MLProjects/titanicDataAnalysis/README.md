@@ -759,7 +759,9 @@ yPredict = optimLogisModel.predict(Xtest)
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   Accuracy of optimized logistic model is </p>
 
 from sklearn.metrics import accuracy_score
-accuracy_score(ytest , yPredict)  ###### #  accuracy score  is  0.8379888268156425
+accuracy_score(ytest , yPredict)  
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #  accuracy score  is  0.8379888268156425</p>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #   confusion metrics </p>
 
