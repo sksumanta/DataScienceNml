@@ -89,10 +89,6 @@ print(titanicDF.info())
 titanicDF.describe( include = 'all' )
 
 ###### # statistics for all columns.
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
 <table>
 <tbody>
 <tr>
