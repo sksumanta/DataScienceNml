@@ -58,17 +58,48 @@
 </body>
 </html>
 
+#####  Where did the passengers come from?
+
+titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
+
+<table>
+<tbody>
+<tr>
+<td>Embarked</td>
+<td>C</td>
+<td>Q</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Pclass</td>
+</tr>
+<tr>
+<td>1</td>
+<td>104.718529</td>
+<td>90.000000</td>
+<td>70.364862</td>
+</tr>
+<tr>
+<td>2</td>
+<td>25.358335</td>
+<td>12.350000</td>
+<td>20.327439</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11.214083</td>
+<td>11.183393</td>
+<td>14.644083</td>
+</tr>
+</tbody>
+</table>
+What deck/cabin were the passengers on and how does that relate to their class? Did the deck have an effect on the passengers survival rate? 
 
 
-2.) What deck/cabin were the passengers on and how does that relate to their class?
 
-3.) Where did the passengers come from?
+Who was alone and who was with family? 
+Did family size has any effcet on survival rate? 
 
-4.) Who was alone and who was with family?
+What factors helped someone survive the sinking?
 
-5.) What factors helped someone survive the sinking?
-
-6.) Did the deck have an effect on the passengers survival rate? 
-
-7.) Did family size has any effcet on survival rate? 
 
