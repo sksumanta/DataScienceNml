@@ -100,7 +100,7 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 
 ###### # Visualize the count of passanger per class
 
-![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
+![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG) 
 
 ###### What deck/cabin were the passengers on and how does that relate to their class? Did the deck have an effect on the passengers survival rate? 
 
