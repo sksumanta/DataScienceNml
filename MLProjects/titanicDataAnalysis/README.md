@@ -94,22 +94,63 @@ titanicDF.groupby(['Pclass','Embarked']).Fare.mean().unstack()
 </tbody>
 </table>
 
-###### # Visualize of passanger Fare
+###### # Visualize of passenger Fare
 
 ![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
 
-###### # Visualize the count of passanger per class
+###### # Visualize the count of passenger per class
 
-![passanger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG) 
+![passenger class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG) 
 
-###### # Visualize average age of male and female passanger per class
+###### # Visualize average age of male and female passenger per class
 
-![average age of passanger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
-
+![average age of passenger per class](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/avgAge.png)
 
 
 ###### What deck/cabin were the passengers on and how does that relate to their class? Did the deck have an effect on the passengers survival rate? 
 
+For this fill the nan value of cabin column to 'K' and keep only first upper case alphabetic char from alphanumeric value of cabin.
+
+<table>
+<tbody>
+<tr>
+<td>cabinAlpha</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>K</td>
+</tr>
+<tr>
+<td>Survived</td>
+</tr>
+<tr>
+<td>0</td>
+<td>8</td>
+<td>14</td>
+<td>24</td>
+<td>8</td>
+<td>8</td>
+<td>5</td>
+<td>2</td>
+<td>480</td>
+</tr>
+<tr>
+<td>1</td>
+<td>7</td>
+<td>35</td>
+<td>35</td>
+<td>25</td>
+<td>24</td>
+<td>8</td>
+<td>2</td>
+<td>206</td>
+</tr>
+</tbody>
+</table>
 
 
 ###### Who was alone and who was with family? 
