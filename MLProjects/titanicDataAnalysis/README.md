@@ -270,7 +270,7 @@ ax.set_xlabel("passanger fare")
 
 ax.set_ylabel("No of passanger")
 
-![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.PNG)
+![Visualization of Fare](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/Fare.png)
 
 
 
