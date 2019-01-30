@@ -151,11 +151,11 @@ For this fill the nan value of cabin column to 'K' and keep only first upper cas
 </tbody>
 </table>
 
-###### Did age state has any effcet on survival rate? 
+###### Did age state has any effect on survival rate? 
 
 ![agestate wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/agestate.PNG)
 
-###### Who was alone and who was with family? 
+###### Feature engineering of family size.
 
 titanicDF['familySize'] = titanicDF['SibSp'] + titanicDF['Parch'] + 1 # 1 is added for person itself
 
@@ -165,7 +165,7 @@ titanicDF['familySize'].max()
 
 ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySize.PNG)
 
-###### Did family size has any effcet on survival rate? 
+###### Did family size has any effect on survival rate? 
 <table>
 <tbody>
 <tr>
@@ -228,7 +228,7 @@ titanicDF['familySize'].max()
 
  ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySizewrtservive.PNG)
  
-###### What factors helped someone survive the sinking? 
+###### What factors effect passenger servival? 
 
 Using PCA get the minimum number of features which we need to transform the training set and test set. 
 
