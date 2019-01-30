@@ -6,7 +6,7 @@
 
 
 
-![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/pclass1.PNG)
+![pclass](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/moviesClustering/movieCluster.PNG)
 
 
 
