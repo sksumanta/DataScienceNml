@@ -1,5 +1,5 @@
 ### Titanic data analysis
-	The Titanic Data is a classification problem to predict new passenger is survived or died.
+	The Titanic Data is a classification problem to predict passenger survival.
 ##### Features in the file 
     PassengerID : Serial no assigned to each passenger
     Survived : Passenger survived or not at titanic disaster (1 - survived, 0 - not)
