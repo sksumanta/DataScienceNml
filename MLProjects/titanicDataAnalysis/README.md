@@ -228,7 +228,7 @@ titanicDF['familySize'].max()
 
  ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySizewrtservive.PNG)
  
-###### What factors considered for passenger survival? 
+###### What factors that influence surviving a sinking ship?
 
 Using PCA get the minimum number of features which we need to transform the training set and test set. 
 
