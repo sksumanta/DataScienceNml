@@ -109,7 +109,14 @@ for word in words:
         if re.search('[a-zA-Z]', str(word)):
             filteredWords.append(word)
 print(filteredWords)
-'''        
+'''       
+'''
+# Frequency of each word is 
+fequency={}
+for wd in wordStrmmer:
+    fequency[wd]=onlyWords.count(wd)  
+print(fequency)
+'''
 alphaWord=[wd for wd in words if re.search('[a-zA-Z]', str(wd))]
 print("from words we got only alphabetical word list as below \n\n ",alphaWord)
 
@@ -151,14 +158,6 @@ print(onlyWords)
 print(len(onlyWords))
 wordStrmmer = tokenizeNstem(textTest)
 print(len(wordStrmmer))
-
-'''
-# Frequency of each word is 
-fequency={}
-for wd in wordStrmmer:
-    fequency[wd]=onlyWords.count(wd)  
-print(fequency)
-'''
 
 wordsDataframe = pd.DataFrame({'WORD': onlyWords}, index = wordStrmmer)
 print('there are ' + str(wordsDataframe.shape[0]) + ' items in wordsDataframe')
