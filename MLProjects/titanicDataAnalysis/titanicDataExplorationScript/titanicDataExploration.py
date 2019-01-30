@@ -191,6 +191,9 @@ male    41.864934  31.083944  25.730884
 
 titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack() # unstack() show output in table format
 
+Psex = titanicDF.groupby(['Sex','Pclass']).Age.mean().unstack()
+import seaborn as sns
+ax = sns.lineplot( data=Psex)
 
 # Step-4 Delete null data or imputation (fill) of null data. Also deal with outliers.  
 
@@ -343,6 +346,8 @@ titanicDF['ageState'].value_counts()
 
 titanicDF.groupby(['ageState','Survived']).ageState.count().unstack()
 
+import seaborn as sns
+sns.factorplot('ageState', 'Survived', data=titanicDF, hue='Sex') 
 
 # lets check 'SibSp','Parch' column to create a new feature 
 
@@ -359,6 +364,8 @@ ax = titanicDF['familySize'].plot(kind='hist', figsize=(15,10),
 
 titanicDF.groupby(['familySize' , 'Survived']).Survived.count().unstack()
 
+import seaborn as sns
+sns.factorplot('familySize', 'ageState', data=titanicDF, hue='Survived')
 
 #Lets check 'name' column to create a new feature 'title'
 
@@ -621,7 +628,21 @@ XtrainedScaled = scaler.fit_transform(Xtrain)
 #standardize the test data
 XtestScaled =  scaler.transform(Xtest)
 
-# create the model after standardization 
+# Before creating a model let’s find the features which has more dependency for the prediction using PCA
+
+from sklearn.decomposition import PCA
+pca = PCA(n_components = None)  # we have no prior knowledge about the variance of factors.
+pca.fit(XtrainedScaled)
+variance = pca.explained_variance_ratio_
+
+# Using the minimum number of features (you chosen) we need to transform the training set and test set. 
+
+pca = PCA(n_components = 15 )
+XtrainedPca = pca.fit_transform(XtrainedScaled)
+XtestPca = pca.transform(XtestScaled)
+explained_variance = pca.explained_variance_ratio_
+
+# create the model after PCA 
 
 from sklearn.linear_model import LogisticRegression
 logisReg = LogisticRegression(random_state=0)
@@ -632,12 +653,12 @@ penalties= ['l1','l2']
 gridParamters = {'C':alpha , 'penalty': penalties}
 # cv=k will perform k-fold cross validation
 optimLogisModel = GridSearchCV(logisReg , param_grid=gridParamters , cv=3) 
-optimLogisModel.fit(Xtrain, ytrain)
+optimLogisModel.fit(XtrainedPca, ytrain)
 
-# best_params_ give model paramerters for which we will get optimize model
+# best_params_ give model parameters for which we will get optimize model
 optimLogisModel.best_params_  
 
-yPredict = optimLogisModel.predict(Xtest)
+yPredict = optimLogisModel.predict(XtestPca)
 
 # Accuracy of optimized logistic model is
 
@@ -650,6 +671,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score,classification_repo
 
 confusionMatrixLreg = confusion_matrix(ytest , yPredict )
 print(confusionMatrixLreg)
+
 
 
 # Lets consider the Naivebayes Algorithm to perform prediction.
