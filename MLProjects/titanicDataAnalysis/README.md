@@ -224,11 +224,11 @@ titanicDF['familySize'].max()
 </tbody>
 </table>
 
-###### # Visualize family size wrt servival rate
+###### # Visualize family size wrt survival rate
 
  ![familySize wrt servival rate](https://github.com/sksumanta/DatascienceNml/blob/master/AllProjectImages/titanic/familySizewrtservive.PNG)
  
-###### What factors effect passenger servival? 
+###### What factors considered for passenger survival? 
 
 Using PCA get the minimum number of features which we need to transform the training set and test set. 
 
