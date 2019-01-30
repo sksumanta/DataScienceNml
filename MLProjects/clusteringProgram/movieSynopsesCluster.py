@@ -152,6 +152,14 @@ print(len(onlyWords))
 wordStrmmer = tokenizeNstem(textTest)
 print(len(wordStrmmer))
 
+'''
+# Frequency of each word is 
+fequency={}
+for wd in wordStrmmer:
+    fequency[wd]=onlyWords.count(wd)  
+print(fequency)
+'''
+
 wordsDataframe = pd.DataFrame({'WORD': onlyWords}, index = wordStrmmer)
 print('there are ' + str(wordsDataframe.shape[0]) + ' items in wordsDataframe')
 print(wordsDataframe)
