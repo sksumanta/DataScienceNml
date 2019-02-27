@@ -207,9 +207,9 @@ cols = [
 'BsmtHalfBath','KitchenQual','Functional','GarageType','GarageYrBlt',
 'GarageFinish','GarageCars','GarageQual','GarageCond','SaleType' ]
 
-x = [cols[start::3] for start in range(3)]      # to get 3 histogram deensity graph
+x = [cols[start::3] for start in range(3)]      # to get 3 graph for clear visualization
     
-plotHist(HousePriceDf[x[0]])
+
 
 
 
