@@ -129,25 +129,87 @@ plt.show()
 sns.heatmap(HousePriceDf[dfColumns].corr(),annot=True,cmap='RdYlGn')
 plt.show()
 
-
-
-#Data Preprocessing 
+                            #Data Preprocessing 
 
 # Handle outliers for SalePrice 
 
 # Lets consider GrLivArea-: ground living area square feet to analyse saleprice
 
+plt.scatter(HousePriceDf['GrLivArea'], HousePriceDf['SalePrice']) # visualize outliers
+plt.xlabel("Ground LivArea")
 
+# To deal with the outliers let's transform the 'SalePrice' using log-transformation
+#if sale price is zero we can handel it by adding 1
 
+transformSalePrice = np.log1p(HousePriceDf['SalePrice'])  # log1p = log(data +1) 
 
+#print(transformSalePrice)
 
+plt.scatter(HousePriceDf['GrLivArea'],transformSalePrice)
+plt.xlabel("Ground LivArea")
 
+                        #Fill null value
+                        
+# check the null value in dataframe
 
+HousePriceDf.info()
 
+nullData= HousePriceDf[pd.isnull(HousePriceDf).any(axis=1)]
 
+#Lets check the null values for the below columns 
 
+# nullCols = pd.isnull(HousePriceDf[HousePriceDf.columns]).any() == True
 
+cols = ['MSSubClass', 'LotFrontage', 'LotArea', 'MasVnrArea', 'BsmtFinSF1', 
+        'BsmtFinSF2' , 'BsmtUnfSF','BedroomAbvGr','KitchenAbvGr' ,'1stFlrSF', 
+        'TotalBsmtSF' , '2ndFlrSF' ,'GrLivArea' , 'GarageArea' ,'WoodDeckSF' , 
+        'OpenPorchSF','YearBuilt' ,'YearRemodAdd' , 'TotRmsAbvGrd' ,'FullBath']
 
+for c in cols:
+    if pd.isnull(HousePriceDf[c]).any() == True:
+# If null value presnet then count the no of null value in that column
+        print(c, "column has " , pd.isnull(HousePriceDf[c]).sum() ,"null values")
+        
+# 'BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','GarageArea','MasVnrArea','LotFrontage' having null
+      
+# fill null values by using statistical methods.
+        
+#plot histogram to check the distrubution of the null columns
+
+cols = ['BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','GarageArea','MasVnrArea','LotFrontage']
+
+plotHist(cols)
+
+# find the mean and median of the null columns
+
+for c in cols:
+    print("mean of",c  , "is ", HousePriceDf[c].mean())
+    print("median of",c  , "is ",HousePriceDf[c].median())   
+# lets fill the median value in the null columns
+
+for c in cols:
+    HousePriceDf[c].fillna(HousePriceDf[c].median() , inplace = True)
+
+HousePriceDf.info()
+
+'''
+ Remaining " 'MSZoning','Utilities','Exterior1st','Exterior2nd','MasVnrType',
+'BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','BsmtFullBath',
+'BsmtHalfBath','KitchenQual','Functional','GarageType','GarageYrBlt',
+'GarageFinish','GarageCars','GarageQual','GarageCond','SaleType' "
+
+are null
+'''
+
+cols = [
+'MSZoning','Utilities','Exterior1st','Exterior2nd','MasVnrType',
+'BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','BsmtFullBath',
+'BsmtHalfBath','KitchenQual','Functional','GarageType','GarageYrBlt',
+'GarageFinish','GarageCars','GarageQual','GarageCond','SaleType' ]
+
+x = [cols[start::3] for start in range(3)]      # to get 3 histogram deensity graph
+    
+plotHist(HousePriceDf[x[0]])
 
 
 
