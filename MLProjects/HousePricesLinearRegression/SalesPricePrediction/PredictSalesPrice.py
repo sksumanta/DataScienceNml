@@ -13,16 +13,14 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-salesPriceDf = pd.read_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/sample_submission.csv")
-housePriceDf = pd.read_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/HouseData.csv")
-
-HousePriceDf = pd.concat([housePriceDf,salesPriceDf['SalePrice']],axis=1)
+HousePriceDf = pd.read_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/train.csv")
 
 HousePriceDf.shape      # shape of the dataframe
 
 HousePriceDf.info()
 
-# As more than 70 data is null in the below columns so we droped these columns
+# As more than 70% data is null in the below columns so we droped these columns
+
 HousePriceDf = HousePriceDf.drop(['Alley', 'FireplaceQu' , 'PoolQC','Fence','MiscFeature' ] , axis=1)
 
 HousePriceDf.shape      # shape of the dataframe
@@ -34,20 +32,13 @@ describes = HousePriceDf.describe(include='all')
 HousePriceDf['SalePrice'].describe() 
 
 # Distribution of sales price
-
+plt.figure()
 plt.hist(HousePriceDf['SalePrice'])
 
+plt.figure()
 plt.boxplot(HousePriceDf['SalePrice'])
 
-'''
-Below columns are having continuous value.
-
-'MSSubClass', 'LotFrontage', 'LotArea', 'MasVnrArea', 'BsmtFinSF1', 
-'BsmtFinSF2' , 'BsmtUnfSF' , 'TotalBsmtSF' , '1stFlrSF' , '2ndFlrSF' ,
-'GrLivArea' , 'GarageArea' ,'WoodDeckSF' , 'OpenPorchSF' 
-
-so lets check the distrution of these columns.
-'''
+#lets check the distrution for Below continuous value columns.
 
 columnList = ['MSSubClass', 'LotFrontage', 'LotArea', 'MasVnrArea', 'BsmtFinSF1', 
 'BsmtFinSF2' , 'BsmtUnfSF','BedroomAbvGr','KitchenAbvGr' ]
@@ -91,16 +82,19 @@ plotScatter(columnList2)
 
 # checking the distribution of 'TotRmsAbvGrd' and group 'TotRmsAbvGrd' and 'saleprice' 
 
+plt.figure()
 plt.hist(HousePriceDf['TotRmsAbvGrd'])
 
 HousePriceDf['TotRmsAbvGrd'].value_counts()
 
+plt.figure()
 ax = HousePriceDf['TotRmsAbvGrd'].value_counts().plot(kind="bar")
 ax.set(xlabel="Total Rooms Above Grade", ylabel="Count")
 plt.show()
 
 HousePriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().unstack()
 
+plt.figure()
 ax = HousePriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().plot(kind="bar")
 ax.set(xlabel="Total Rooms Above Grade", ylabel="Mean")
 plt.show()
@@ -111,10 +105,18 @@ plt.show()
 dfColumns = ['SalePrice','TotRmsAbvGrd','TotalBsmtSF','GrLivArea','GarageArea','FullBath','YearBuilt','YearRemodAdd']
 #check is there any null value for the above columns in the dataframe
 
-isNullDf = pd.DataFrame(HousePriceDf[dfColumns].isnull())
-for checkNullCount in isNullDf.columns:
-    valCount = isNullDf[checkNullCount].value_counts()  # TotalBsmtSF and GarageArea having null value
-    print(checkNullCount , "\n" , valCount ,"\n\n")
+
+def countNull(cols):
+    res=[]
+    for c in cols:
+        if pd.isnull(HousePriceDf[c]).any() == True:
+# If null value presnet then count the no of null value in that column
+            res.append(c + "column has " + str(pd.isnull(HousePriceDf[c]).sum() )+ "null values")
+        else:
+            res.append("no null values in " + c)
+    return res
+       
+countNull(dfColumns)
 
 '''     
 # As we can not use null value column in pairplot so column list is
@@ -128,20 +130,11 @@ sns.pairplot(HousePriceDf[dfColumns],size = 2 ,kind ='scatter')
 plt.show()
 '''
 
+plt.figure()
 sns.heatmap(HousePriceDf[dfColumns].corr(),annot=True,cmap='RdYlGn')
 plt.show()
 
-
-'''
- Remaining catagoriacal columns "    
-             'MSZoning','Utilities','Exterior1st','Exterior2nd','MasVnrType',
-'BsmtQual','BsmtCond','BsmtExposure','BsmtFinType1','BsmtFinType2','BsmtFullBath',
-'BsmtHalfBath','KitchenQual','Functional','GarageType','SaleType'b,
-'GarageFinish','GarageCars','GarageQual','GarageCond','GarageYrBlt' 
-    "
-
-are null
-'''
+#lets check the distrution for Below catagoriacal value columns.
 
 colms = [
 'MSZoning','Exterior1st','Exterior2nd','MasVnrType','BsmtQual',
@@ -168,7 +161,6 @@ def plotBar(col):
 for ind in range(3):
     col=x[ind]
     plotBar(col)
-    
 
                             #Data Preprocessing 
 
@@ -176,6 +168,7 @@ for ind in range(3):
 
 # Lets consider GrLivArea-: ground living area square feet to analyse saleprice
 
+plt.figure()
 plt.scatter(HousePriceDf['GrLivArea'], HousePriceDf['SalePrice']) # visualize outliers
 plt.xlabel("Ground LivArea")
 
@@ -186,6 +179,7 @@ transformSalePrice = np.log1p(HousePriceDf['SalePrice'])  # log1p = log(data +1)
 
 #print(transformSalePrice)
 
+plt.figure()
 plt.scatter(HousePriceDf['GrLivArea'],transformSalePrice)
 plt.xlabel("Ground LivArea")
 
@@ -197,36 +191,13 @@ HousePriceDf.info()
 
 nullData= HousePriceDf[pd.isnull(HousePriceDf).any(axis=1)]
 
-#Lets check the null values for the below columns 
-
-# nullCols = pd.isnull(HousePriceDf[HousePriceDf.columns]).any() == True
-
-cols = ['MSSubClass', 'LotFrontage', 'LotArea', 'MasVnrArea', 'BsmtFinSF1', 
-        'BsmtFinSF2' , 'BsmtUnfSF','BedroomAbvGr','KitchenAbvGr' ,'1stFlrSF', 
-        'TotalBsmtSF' , '2ndFlrSF' ,'GrLivArea' , 'GarageArea' ,'WoodDeckSF' , 
-        'OpenPorchSF','YearBuilt' ,'YearRemodAdd' , 'TotRmsAbvGrd' ,'FullBath']
-
-
-def countNull(cols):
-    res=[]
-    for c in cols:
-        if pd.isnull(HousePriceDf[c]).any() == True:
-# If null value presnet then count the no of null value in that column
-            res.append(c + "column has " + str(pd.isnull(HousePriceDf[c]).sum() )+ "null values")
-        else:
-            res.append("no null values in " + c)
-    return res
-        
-        
-countNull(cols)     
-   
-# 'BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','GarageArea','MasVnrArea','LotFrontage' having null
-      
-# fill null values by using statistical methods.
-        
-#plot histogram to check the distrubution of the null columns
+#Lets check null values for below columns and fill them using statistical methods.  
 
 cols = ['BsmtFinSF1','BsmtFinSF2','BsmtUnfSF','TotalBsmtSF','GarageArea','MasVnrArea','LotFrontage']
+
+countNull(cols)     
+      
+#plot histogram to check the distrubution of the null columns
 
 plotHist(cols)
 
@@ -234,27 +205,23 @@ plotHist(cols)
 
 def findMeanMedian(cols):
     for c in cols:
-        print("mean of",c  , "is ", HousePriceDf[c].mean())
-        print("median of",c  , "is ",HousePriceDf[c].median())   
+        print("mean of",c  , "is ", HousePriceDf[c].mean()) 
+        print("median of",c  , "is ",HousePriceDf[c].median())  
+
 
 findMeanMedian(cols)  
       
-# lets fill the median value in the null columns
+# lets fill  "median value"  in the null columns
 
 for c in cols:
     HousePriceDf[c].fillna(HousePriceDf[c].median() , inplace = True)
 
 HousePriceDf.info()
 
-# Fill the null values for the above catagorical columns.
-
 '''
-
-# fill 'BsmtQual', 'BsmtCond','BsmtFinType1','BsmtFinType2','BsmtExposure' 
-# using rainforest classifier.
-# And considering  " ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl'] "
-# columns
-
+Fill the null values of 
+" 'BsmtQual', 'BsmtCond','BsmtFinType1','BsmtFinType2','BsmtExposure' " 
+catagorical columns using  " ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl'] " columns
 '''
 
 indColumns =  ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl']
@@ -296,6 +263,7 @@ for rowIndex , notnullBsmtQual in zip(rowIndexBsmtQual , notnullData['BsmtQual']
 
 # heatmap 
 
+plt.figure()
 ax = sns.heatmap(notnullData.corr() ,annot=True,cmap='RdYlGn')
 ax.xaxis.set_ticks_position('top')     #you will get a warning
 plt.show()
@@ -315,7 +283,19 @@ rowIndexBsmtQual =  sourceDf[sourceDf.BsmtQual.isnull()].index.values.astype(int
         
 for rowIndex , predBsmtQual in zip(rowIndexBsmtQual , predictBsmtQual['BsmtQual'] ):
     sourceDf.ix[rowIndex, 'BsmtQual' ] = abs(predBsmtQual)
-        
+    
+# now add notnull value of "BsmtQual" column to a new cloumn in original dataframe              
+HousePriceDf['BsmtQualRes'] = sourceDf['BsmtQual']
+
+'''
+fill null value for " 'GarageType','GarageCond','GarageQual','GarageFinish' "
+using  'LotShape','LotArea','HouseStyle','TotRmsAbvGrd','OverallQual' columns.
+'''
+
+indColumns = ['LotShape','LotArea','HouseStyle','TotRmsAbvGrd','OverallQual']
+
+depnColumns = ['GarageType']
+
         
         
         
