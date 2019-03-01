@@ -13,30 +13,30 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-HousePriceDf = pd.read_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/train.csv")
+hPriceDf = pd.read_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/train.csv")
 
-HousePriceDf.shape      # shape of the dataframe
+hPriceDf.shape      # shape of the dataframe
 
-HousePriceDf.info()
+hPriceDf.info()
 
-# As more than 70% data is null in the below columns so we droped these columns
+# As more than 70 persent data is null in the below columns so we droped these columns
 
-HousePriceDf = HousePriceDf.drop(['Alley', 'FireplaceQu' , 'PoolQC','Fence','MiscFeature' ] , axis=1)
+hPriceDf = hPriceDf.drop(['Alley', 'FireplaceQu' , 'PoolQC','Fence','MiscFeature' ] , axis=1)
 
-HousePriceDf.shape      # shape of the dataframe
+hPriceDf.shape      # shape of the dataframe
 
-HousePriceDf.info()
+hPriceDf.info()
 
-describes = HousePriceDf.describe(include='all')
+describes = hPriceDf.describe(include='all')
 
-HousePriceDf['SalePrice'].describe() 
+hPriceDf['SalePrice'].describe() 
 
 # Distribution of sales price
 plt.figure()
-plt.hist(HousePriceDf['SalePrice'])
+plt.hist(hPriceDf['SalePrice'])
 
 plt.figure()
-plt.boxplot(HousePriceDf['SalePrice'])
+plt.boxplot(hPriceDf['SalePrice'])
 
 #lets check the distrution for Below continuous value columns.
 
@@ -53,7 +53,7 @@ def plotHist(col):
     for columns in col:
         count +=1
         plt.subplot(3,3,count)
-        ax = HousePriceDf[columns].plot(kind = 'hist' , figsize=(15,10),
+        ax = hPriceDf[columns].plot(kind = 'hist' , figsize=(15,10),
                            bins = 10 )
         ax.set_xlabel(columns)
     plt.show()
@@ -70,8 +70,8 @@ def plotScatter(col):
     for columns in col:
         count +=1
         plt.subplot(3,3,count)
-        #print(columns , "\n\n" , HousePriceDf[columns])
-        plt.scatter(HousePriceDf[columns],HousePriceDf['SalePrice'])
+        #print(columns , "\n\n" , hPriceDf[columns])
+        plt.scatter(hPriceDf[columns],hPriceDf['SalePrice'])
         plt.xlabel(columns, fontsize=9)
     plt.show()
 
@@ -79,23 +79,29 @@ plotScatter(columnList)
 
 plotScatter(columnList2)
 
+# seaborn's kdeplot, plots univariate or bivariate density estimates.
+# FacetGrid drawing multiple instances of the same plot on different subsets of dataset.
+
+columns = ['SalePrice','OverallQual','TotalBsmtSF','GrLivArea','GarageArea','FullBath','YearBuilt','YearRemodAdd']
+sns.FacetGrid(hPriceDf[columns], hue="OverallQual", size=10 ).map(sns.kdeplot, "YearBuilt").add_legend()
+plt.show()
 
 # checking the distribution of 'TotRmsAbvGrd' and group 'TotRmsAbvGrd' and 'saleprice' 
 
 plt.figure()
-plt.hist(HousePriceDf['TotRmsAbvGrd'])
+plt.hist(hPriceDf['TotRmsAbvGrd'])
 
-HousePriceDf['TotRmsAbvGrd'].value_counts()
+hPriceDf['TotRmsAbvGrd'].value_counts()
 
 plt.figure()
-ax = HousePriceDf['TotRmsAbvGrd'].value_counts().plot(kind="bar")
+ax = hPriceDf['TotRmsAbvGrd'].value_counts().plot(kind="bar")
 ax.set(xlabel="Total Rooms Above Grade", ylabel="Count")
 plt.show()
 
-HousePriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().unstack()
+hPriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().unstack()
 
 plt.figure()
-ax = HousePriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().plot(kind="bar")
+ax = hPriceDf[['SalePrice', 'TotRmsAbvGrd']].groupby(['TotRmsAbvGrd']).mean().plot(kind="bar")
 ax.set(xlabel="Total Rooms Above Grade", ylabel="Mean")
 plt.show()
 
@@ -109,9 +115,9 @@ dfColumns = ['SalePrice','TotRmsAbvGrd','TotalBsmtSF','GrLivArea','GarageArea','
 def countNull(cols):
     res=[]
     for c in cols:
-        if pd.isnull(HousePriceDf[c]).any() == True:
+        if pd.isnull(hPriceDf[c]).any() == True:
 # If null value presnet then count the no of null value in that column
-            res.append(c + "column has " + str(pd.isnull(HousePriceDf[c]).sum() )+ "null values")
+            res.append(c + " column has " + str(pd.isnull(hPriceDf[c]).sum() )+ " null values")
         else:
             res.append("no null values in " + c)
     return res
@@ -126,12 +132,12 @@ dfColumns = ['SalePrice','TotRmsAbvGrd','GarageArea','FullBath','YearBuilt','Yea
 
 # it is not working we will check later
 
-sns.pairplot(HousePriceDf[dfColumns],size = 2 ,kind ='scatter')
+sns.pairplot(hPriceDf[dfColumns],size = 2 ,kind ='scatter')
 plt.show()
 '''
 
 plt.figure()
-sns.heatmap(HousePriceDf[dfColumns].corr(),annot=True,cmap='RdYlGn')
+sns.heatmap(hPriceDf[dfColumns].corr(),annot=True,cmap='RdYlGn')
 plt.show()
 
 #lets check the distrution for Below catagoriacal value columns.
@@ -142,9 +148,9 @@ colms = [
 'Functional','BsmtExposure','SaleType','GarageFinish','GarageQual',
 'GarageCond', 'GarageType','GarageCars','BsmtFullBath','BsmtHalfBath']
 
-houseCatagoricalDf = HousePriceDf[colms]
+houseCatagoricalDf = hPriceDf[colms]
 
-x = [colms[start::3] for start in range(3)]      # to get 3 set of graph for clear visualization
+colSet = [colms[start::3] for start in range(3)]      # to get 3 set of graph for clear visualization
 
 def plotBar(col):
     #plt.subplots_adjust(hspace=0.4)
@@ -153,13 +159,13 @@ def plotBar(col):
     for columns in col:
         count +=1
         plt.subplot(3,3,count)
-        ax = HousePriceDf[columns].value_counts().plot(kind='bar', figsize=(25,20))
+        ax = hPriceDf[columns].value_counts().plot(kind='bar', figsize=(25,20))
         ax.set_xlabel(columns)
     plt.show()
 
-#HousePriceDf['GarageFinish'].value_counts()
+#hPriceDf['GarageFinish'].value_counts()
 for ind in range(3):
-    col=x[ind]
+    col=colSet[ind]
     plotBar(col)
 
                             #Data Preprocessing 
@@ -169,27 +175,27 @@ for ind in range(3):
 # Lets consider GrLivArea-: ground living area square feet to analyse saleprice
 
 plt.figure()
-plt.scatter(HousePriceDf['GrLivArea'], HousePriceDf['SalePrice']) # visualize outliers
+plt.scatter(hPriceDf['GrLivArea'], hPriceDf['SalePrice']) # visualize outliers
 plt.xlabel("Ground LivArea")
 
 # To deal with the outliers let's transform the 'SalePrice' using log-transformation
 #if sale price is zero we can handel it by adding 1
 
-transformSalePrice = np.log1p(HousePriceDf['SalePrice'])  # log1p = log(data +1) 
+transformSalePrice = np.log1p(hPriceDf['SalePrice'])  # log1p = log(data +1) 
 
 #print(transformSalePrice)
 
 plt.figure()
-plt.scatter(HousePriceDf['GrLivArea'],transformSalePrice)
+plt.scatter(hPriceDf['GrLivArea'],transformSalePrice)
 plt.xlabel("Ground LivArea")
 
                         #Fill null value
                         
 # check the null value in dataframe
 
-HousePriceDf.info()
+hPriceDf.info()
 
-nullData= HousePriceDf[pd.isnull(HousePriceDf).any(axis=1)]
+nullData= hPriceDf[pd.isnull(hPriceDf).any(axis=1)]
 
 #Lets check null values for below columns and fill them using statistical methods.  
 
@@ -205,8 +211,8 @@ plotHist(cols)
 
 def findMeanMedian(cols):
     for c in cols:
-        print("mean of",c  , "is ", HousePriceDf[c].mean()) 
-        print("median of",c  , "is ",HousePriceDf[c].median())  
+        print("mean of",c  , "is ", hPriceDf[c].mean()) 
+        print("median of",c  , "is ",hPriceDf[c].median())  
 
 
 findMeanMedian(cols)  
@@ -214,21 +220,25 @@ findMeanMedian(cols)
 # lets fill  "median value"  in the null columns
 
 for c in cols:
-    HousePriceDf[c].fillna(HousePriceDf[c].median() , inplace = True)
+    hPriceDf[c].fillna(hPriceDf[c].median() , inplace = True)
 
-HousePriceDf.info()
+hPriceDf.info()
+
+from sklearn.preprocessing import LabelEncoder 
+le = LabelEncoder()   # creating label encoder instance
+
+
 
 '''
-Fill the null values of 
-" 'BsmtQual', 'BsmtCond','BsmtFinType1','BsmtFinType2','BsmtExposure' " 
-catagorical columns using  " ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl'] " columns
+Fill the null values of " 'BsmtQual'catagorical columns
+ using  " ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl'] " columns
 '''
 
 indColumns =  ['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl']
 
 depColumn = ['BsmtQual']
 
-sourceDf = pd.concat([HousePriceDf[indColumns],HousePriceDf[depColumn]] , axis=1)
+sourceDf = pd.concat([hPriceDf[indColumns],hPriceDf[depColumn]] , axis=1)
 
 sourceDf.shape
    
@@ -260,14 +270,12 @@ rowIndexBsmtQual =  sourceDf[sourceDf.BsmtQual.isnull()==False].index.values.ast
 for rowIndex , notnullBsmtQual in zip(rowIndexBsmtQual , notnullData['BsmtQual'] ):
     sourceDf.ix[rowIndex, 'BsmtQual' ] = notnullBsmtQual
             
-
 # heatmap 
 
 plt.figure()
 ax = sns.heatmap(notnullData.corr() ,annot=True,cmap='RdYlGn')
 ax.xaxis.set_ticks_position('top')     #you will get a warning
 plt.show()
-
 
 xTrainData = notnullData.loc[:,['TotRmsAbvGrd','TotalBsmtSF','Foundation','RoofMatl']]
 yTrainData = notnullData.loc[:,['BsmtQual']]
@@ -285,36 +293,34 @@ for rowIndex , predBsmtQual in zip(rowIndexBsmtQual , predictBsmtQual['BsmtQual'
     sourceDf.ix[rowIndex, 'BsmtQual' ] = abs(predBsmtQual)
     
 # now add notnull value of "BsmtQual" column to a new cloumn in original dataframe              
-HousePriceDf['BsmtQualRes'] = sourceDf['BsmtQual']
+hPriceDf['BsmtQualRes'] = sourceDf['BsmtQual']
+        
 
-'''
-fill null value for " 'GarageType','GarageCond','GarageQual','GarageFinish' "
-using  'LotShape','LotArea','HouseStyle','TotRmsAbvGrd','OverallQual' columns.
-'''
+                # Fill mode for the null values in catagorical data
+for c in colms:
+    if 'BsmtQual' not in c:
+        #hPriceDf[c].fillna(hPriceDf[c].mode() , inplace = True )
+        hPriceDf[c].fillna(hPriceDf[c].value_counts().index[0], inplace=True)
 
-indColumns = ['LotShape','LotArea','HouseStyle','TotRmsAbvGrd','OverallQual']
+hPriceDf.info()
 
-depnColumns = ['GarageType']
+# fill null value of 'Electrical' column
+hPriceDf['Electrical'].fillna(hPriceDf['Electrical'].value_counts().index[0], inplace=True)
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+# check any column having null value
+
+hPriceDf.columns[hPriceDf.isna().any()].tolist()   # found 'GarageYrBlt' having null value
+
+#Fill null value of 'GarageYrBlt' considering 'GarageType','GarageArea', 'YearRemodAdd','OverallQual'
+
+hPriceDf['YearRemodAdd'] = pd.to_datetime(hPriceDf['YearRemodAdd'], format='%Y', utc=True)
+
+
+
+
+
+
+
+
+
+
