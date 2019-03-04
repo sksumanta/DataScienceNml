@@ -386,9 +386,9 @@ corrMatrix = houseDf.corr().abs()
 
 corrMatrix.to_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/corrMartix.csv")
 
-# find correlation > 70%
+# find correlation > 65%
 
-hiCorrVar=np.where(corrMatrix>0.7)
+hiCorrVar=np.where(corrMatrix>0.65)
 #print(hiCorrVar)
 hiCorrVar=[(corrMatrix.columns[x],corrMatrix.columns[y]) 
                         for x,y in zip(*hiCorrVar) if x!=y and x<y]
@@ -408,24 +408,16 @@ plt.show()
 
 # From the above image we got the below columns for proceed.
 
-columnList = ['YearBuilt','GrLivArea','GarageArea','BsmtFinType2','TotalBsmtSF',
-   'Exterior1st','MSSubClass']
+columnList = ['YearBuilt','GrLivArea','MSSubClass','1stFlrSF','GarageArea',
+              'KitchenQual','Exterior1st','BsmtFinType2','BsmtFinSF2',
+              'BedroomAbvGr','OverallQual']
 
-# Split the data into train and test set 
-
-xTrain= houseDf[ : train.shape[0]].loc[ :,columnList ]
-xTest = houseDf[ train.shape[0] :].loc[:,columnList]
-yTrain= train['SalePrice'] 
-
-xTrain.shape
-xTest.shape
-yTrain.shape
-
+newDf = houseDf.loc[:,columnList]
 
 #standardize the x variables/ independent variables 
 
 from sklearn.preprocessing import StandardScaler
-XStd = StandardScaler().fit_transform(xTrain.astype(np.float))
+XStd = StandardScaler().fit_transform(newDf.astype(np.float))
 
 print(np.shape(XStd))
 
@@ -441,18 +433,57 @@ print("correlation matrix of Standardized data \n", corrMatrix, end="\n\n")
 
 # find the PCA on covarienc matrix
 
-eigVals, eigVecs = np.linalg.eig(covMatrix)
+eigVals, eigVects = np.linalg.eig(covMatrix)
         
 print('Eigenvectors \n%s' %eigVecs, end="\n\n")
 print('\nEigenvalues \n%s' %eigVals, end="\n\n")
       
 # find the PCA on correlation matrix
 
-eigVals, eigVecs = np.linalg.eig(corrMatrix)
+eigVals, eigVects = np.linalg.eig(corrMatrix)
         
-print('Eigenvectors \n%s' %eigVecs, end="\n\n")
+print('Eigenvectors \n%s' %eigVects, end="\n\n")
 print('\nEigenvalues \n%s' %eigVals, end="\n\n")
       
+# we can see eigen value and eigen vectors are almost equal in both cases
+
+# Make a list of (eigenvalue, eigenvector) tuples
+
+eigPairs = [(np.abs(eigVals[i]), eigVects[:,i]) for i in range(len(eigVals))]
+
+print(eigPairs)
+
+# Sort the (eigenvalue, eigenvector) tuples from high to low 
+
+eigPairs.sort(key=lambda x: x[0], reverse=True)
+
+for i in eigPairs:
+    print(i[0],"\t\t",i[1] , end ="\n\n")
+    
+# Let's choosing "top 5" eigenvectors as it has highest eigenvalues to create
+# Projection Matrix
+
+projMatrix = np.hstack((eigPairs[0][1].reshape(11,1),
+                      eigPairs[1][1].reshape(11,1),
+                      eigPairs[2][1].reshape(11,1),
+                      eigPairs[3][1].reshape(11,1),
+                      eigPairs[3][1].reshape(11,1) )
+                        )
+print('Projection Matrix:\n', projMatrix)
+
+
+newXIndeDf = XStd.dot(projMatrix)
+
+# Split the data into train and test set 
+
+xTrain= newXIndeDf[ : train.shape[0]]
+xTest = newXIndeDf[ train.shape[0] :]
+yTrain= train['SalePrice'] 
+
+xTrain.shape
+xTest.shape
+yTrain.shape
+
 
 # Use Decision Tree
 
@@ -460,13 +491,16 @@ from sklearn.tree import DecisionTreeRegressor
 
 # Specify a number for random_state to ensure same results each run
 
-dt = DecisionTreeRegressor(random_state=1)
+dsTree = DecisionTreeRegressor(random_state=1)
 
-dt.fit(xTrain, yTrain)
+dsTree.fit(xTrain, yTrain)
 
 #score/accuracy 
 
-dt.score(xTrain, yTrain)
+dsTree.score(xTrain, yTrain)
+
+# use the model to make predictions with the test data
+yPred = dsTree.predict(xTest)
 
 
 
