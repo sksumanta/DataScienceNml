@@ -469,12 +469,5 @@ dt.score(xTrain, yTrain)
 
 
 
-# standardize and normalize the data 
- 
-
-#corrStdMatrix = np.corrcoef(houseDf.T)
-
-
-
 
 
