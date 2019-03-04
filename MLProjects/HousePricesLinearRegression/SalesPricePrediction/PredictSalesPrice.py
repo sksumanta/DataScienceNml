@@ -270,7 +270,12 @@ skewedCols = skewedData.index
 
 # Lets do one-hot encoding for "MSSubClass" catagorical column.
 
-houseDf = pd.get_dummies(houseDf,columns=['MSSubClass'])
+from sklearn.preprocessing import LabelEncoder 
+le = LabelEncoder()   # creating label encoder instance
+
+houseDf['MSSubClass'] = le.fit_transform(houseDf['MSSubClass'])
+
+#houseDf = pd.get_dummies(houseDf,columns=['MSSubClass'])
 houseDf.shape
 
 
@@ -404,10 +409,7 @@ plt.show()
 # From the above image we got the below columns for proceed.
 
 columnList = ['YearBuilt','GrLivArea','GarageArea','BsmtFinType2','TotalBsmtSF',
-   'Exterior1st','MSSubClass_20','MSSubClass_30','MSSubClass_40','MSSubClass_45',
-   'MSSubClass_50','MSSubClass_60','MSSubClass_70','MSSubClass_75',
-   'MSSubClass_80','MSSubClass_85','MSSubClass_90','MSSubClass_120',
-   'MSSubClass_160','MSSubClass_180','MSSubClass_190']
+   'Exterior1st','MSSubClass']
 
 # Split the data into train and test set 
 
