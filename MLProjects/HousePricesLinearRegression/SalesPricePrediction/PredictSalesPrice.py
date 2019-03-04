@@ -373,24 +373,101 @@ houseDf =  houseDf.drop(['BsmtQual'] , axis = 1)
 houseDf.to_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/processedData.csv" , sep=',')
 
 
+# Find the correlation between the columns and find correlation > 70%
+
+corrMatrix = houseDf.corr().abs()
+
+# save the correlation matrix in a file
+
+corrMatrix.to_csv("E:/datascienceNml/DataScienceInPy/HousePricesLinearRegression/Data/corrMartix.csv")
+
+# find correlation > 70%
+
+hiCorrVar=np.where(corrMatrix>0.7)
+#print(hiCorrVar)
+hiCorrVar=[(corrMatrix.columns[x],corrMatrix.columns[y]) 
+                        for x,y in zip(*hiCorrVar) if x!=y and x<y]
+
+print(hiCorrVar)
+
+corrDf = houseDf[pd.concat([ pd.DataFrame(hiCorrVar)[0],
+                      pd.DataFrame(hiCorrVar)[1] ] ,axis = 0)]
+
+
+#Lets go for the heatmap for the columns in dfColumns list 
+plt.figure()
+ax = sns.heatmap(corrDf.corr(),annot=True,cmap='RdYlGn')
+ax.xaxis.set_ticks_position('top')
+plt.xticks(rotation=15)
+plt.show()
+
+# From the above image we got the below columns for proceed.
+
+columnList = ['YearBuilt','GrLivArea','GarageArea','BsmtFinType2','TotalBsmtSF',
+   'Exterior1st','MSSubClass_20','MSSubClass_30','MSSubClass_40','MSSubClass_45',
+   'MSSubClass_50','MSSubClass_60','MSSubClass_70','MSSubClass_75',
+   'MSSubClass_80','MSSubClass_85','MSSubClass_90','MSSubClass_120',
+   'MSSubClass_160','MSSubClass_180','MSSubClass_190']
+
 # Split the data into train and test set 
 
-xTrain= houseDf[: train.shape[0] ]
-xTest = houseDf[ train.shape[0] :]
+xTrain= houseDf[ : train.shape[0]].loc[ :,columnList ]
+xTest = houseDf[ train.shape[0] :].loc[:,columnList]
 yTrain= train['SalePrice'] 
 
 xTrain.shape
 xTest.shape
 yTrain.shape
 
-# find the correlation between the columns 
 
-# find the PCA
+#standardize the x variables/ independent variables 
+
+from sklearn.preprocessing import StandardScaler
+XStd = StandardScaler().fit_transform(xTrain.astype(np.float))
+
+print(np.shape(XStd))
+
+#covarient matrix 
+
+covMatrix = np.cov(XStd.T)
+print("covarient matrix \n" ,covMatrix)
+
+#correlation matrix on Standardized data
+
+corrMatrix = np.corrcoef(XStd.T)
+print("correlation matrix of Standardized data \n", corrMatrix, end="\n\n")
+
+# find the PCA on covarienc matrix
+
+eigVals, eigVecs = np.linalg.eig(covMatrix)
+        
+print('Eigenvectors \n%s' %eigVecs, end="\n\n")
+print('\nEigenvalues \n%s' %eigVals, end="\n\n")
+      
+# find the PCA on correlation matrix
+
+eigVals, eigVecs = np.linalg.eig(corrMatrix)
+        
+print('Eigenvectors \n%s' %eigVecs, end="\n\n")
+print('\nEigenvalues \n%s' %eigVals, end="\n\n")
+      
+
+# Use Decision Tree
+
+from sklearn.tree import DecisionTreeRegressor
+
+# Specify a number for random_state to ensure same results each run
+
+dt = DecisionTreeRegressor(random_state=1)
+
+dt.fit(xTrain, yTrain)
+
+#score/accuracy 
+
+dt.score(xTrain, yTrain)
 
 
-# Baseline model
 
-#score/accuracy of baseline model
 
 # standardize and normalize the data 
  
